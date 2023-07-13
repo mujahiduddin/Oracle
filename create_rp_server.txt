@@ -1,0 +1,6 @@
+ORACLE_INSTANCE/bin/opmnctl 
+
+createcomponent -adminUsername 
+weblogic -adminHost <host_name> -adminPort <port> -oracleHome <oracle_home 
+-oracleInstance <instance_home> -instanceName <instancename> 
+-componentName <bridge_name> -componentType ReportsServerComponent
