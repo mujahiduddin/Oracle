@@ -1,0 +1,4 @@
+SELECT TRUNC(SYSDATE, 'YEAR') + ROWNUM - 1 Dates, to_char(trunc(sysdate,'YEAR')+rownum -1,'Day') Days
+FROM DUAL
+CONNECT BY TRUNC(SYSDATE, 'YEAR') + ROWNUM - 1 < ADD_MONTHS(TRUNC(SYSDATE, 'YEAR'),12)
+and to_char(trunc(sysdate,'YEAR')+rownum -1,'Day') NOT IN ('Friday','Saturday');

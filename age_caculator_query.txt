@@ -1,0 +1,5 @@
+select trunc(months_between(sysdate,dob)/12) ||' Years ' ||
+        trunc(mod(months_between(sysdate,dob),12))  || ' Months '||
+       trunc(sysdate-add_months(dob,trunc(months_between(sysdate,dob)/12)*12+trunc(mod(months_between(sysdate,dob),12)))) ||' Days' Total_ages
+ FROM EMPLOYEE
+WHERE EMPID=:P23_EMPID; 
