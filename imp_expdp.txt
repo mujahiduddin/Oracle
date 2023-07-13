@@ -1,0 +1,32 @@
+CONN / AS SYSDBA
+ALTER USER scott IDENTIFIED BY tiger ACCOUNT UNLOCK;
+
+CREATE OR REPLACE DIRECTORY test_dir AS '/u01/app/oracle/oradata/';
+GRANT READ, WRITE ON DIRECTORY test_dir TO scott;
+
+
+=====================Table Exports/Imports========================
+
+The TABLES parameter is used to specify the tables that are to be exported. The following is an example of the table export and import syntax.
+
+
+expdp scott/tiger@db19c tables=EMP,DEPT directory=TEST_DIR dumpfile=EMP_DEPT.dmp logfile=expdpEMP_DEPT.log
+
+impdp scott/tiger@db19c tables=EMP,DEPT directory=TEST_DIR dumpfile=EMP_DEPT.dmp logfile=impdpEMP_DEPT.log
+
+
+=====================Schema Exports/Imports========================
+
+
+expdp scott/tiger@db19c schemas=SCOTT directory=TEST_DIR dumpfile=SCOTT.dmp logfile=expdpSCOTT.log
+
+impdp scott/tiger@db19c schemas=SCOTT directory=TEST_DIR dumpfile=SCOTT.dmp logfile=impdpSCOTT.log
+
+impdp scott1/tiger@db19c fromuser=scott touser=scott1 directory=TEST_DIR dumpfile=SCOTT.dmp logfile=SCOTT.log
+
+
+=======================Database Exports/Imports=====================
+
+expdp system/password@db19c full=Y directory=TEST_DIR dumpfile=db19c.dmp logfile=expdpdb19c.log
+
+impdp system/password@db19c full=Y directory=TEST_DIR dumpfile=db19c.dmp logfile=impdpdb19c.log
